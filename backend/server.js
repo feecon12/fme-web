@@ -44,6 +44,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client","dist", "index.html"));
 });
 
+
 //start the server
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost/${PORT}`);
