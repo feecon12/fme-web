@@ -40,9 +40,10 @@ app.use(function (req, res) {
 
 //serve static assets if in production
 app.use(express.static("../client/dist"));
-app.get("*", (req, res) => { 
-  res.sendFile(path.resolve(__dirname, "client","dist", "index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 });
+
 
 
 //start the server
