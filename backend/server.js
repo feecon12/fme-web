@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
@@ -38,15 +39,20 @@ app.use(function (req, res) {
   res.status(404).send("404 Not Found");
 });
 
-//serve static assets if in production
-const path = require("path");
+// //serve static assets if in production
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
+
+// app.use(express.static(path.join(__dirname, "../client/dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
+// });
+
+// Serve static files from the Vite build directory
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
-
-
 
 
 //start the server
